@@ -9,15 +9,22 @@
 </head>
 
 <body>
-    <form action="/new" method="GET">
-        <label for="medName">Enter Medicine name</label>
-        <input type="text" placeholder="medicine name">
+    <form action="/add" method="post">
+        <label for="value">Enter value</label>
+        <input type="number" placeholder="value" name="value" id="value">
 
-        <label for="medQuantity">Enter Quantity</label>
-        <input type="number" placeholder="quantity">
+        <label for="name">Enter Medicine name</label>
+        <input type="text" placeholder="medicine name" name="name" id="name">
 
         <label for="price">Enter rate</label>
-        <input type="number" placeholder="rate">
+        <input type="number" placeholder="rate" name="price" id="price">
+
+        <label for="qty">Enter Quantity</label>
+        <input type="number" placeholder="quantity" name="qty" id="qty">
+
+
+
+
         <button>Submit</button>
     </form>
 

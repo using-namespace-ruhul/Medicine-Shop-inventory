@@ -10,19 +10,6 @@ mongoose.connect('mongodb://localhost:27017/medShop')
         console.log(e);
     })
 
-// const p = new Product({
-//     name: 'P650',
-//     price: 30,
-//     qty: 200
-// })
-
-// p.save();
-// .then(p => {
-//     console.log(p)
-// }).catch(e => {
-//     console.log(e)
-// })
-
 const meds = [{
     value: 1,
     name: 'P650',

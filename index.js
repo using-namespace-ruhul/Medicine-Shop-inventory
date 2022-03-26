@@ -4,6 +4,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Product = require('./models/meds')
 
+app.use(express.urlencoded({ extended: true }));
+
 mongoose.connect('mongodb://localhost:27017/medShop')
     .then(() => {
         console.log('Connection open');
@@ -17,7 +19,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //request to get the home page
-app.get('/home', async(req, res) => {
+app.get('/', async(req, res) => {
     const products = await Product.find({});
     res.render('home', { products });
 })
@@ -35,13 +37,23 @@ app.get('/bill', async(req, res) => {
 
 
 // To add meds
-// app.get('/home/add', async(req, res) => {
-//     res.render('add');
-// })
+app.get('/add', async(req, res) => {
+    res.render('add');
+})
 
-// app.get('/home/add/new', async(req, res) => {
-//     console.log(req.query);
-// })
+app.post('/add', async(req, res) => {
+    // let { rate } = await req.body;
+    // console.log(req.body);
+    // const value = await req.body.value;
+    // const name = await req.body.name;
+    // const price = await req.body.rate;
+    // const qty = await req.body.qnty;
+    // const newM = { valu: value, name: name, price: price, qty: qty };
+    const newMed = new Product(req.body);
+    await newMed.save();
+    console.log(newMed);
+    res.redirect('/');
+})
 
 
 
